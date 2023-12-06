@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROS Publisher</title>
+
+    <script src="./roslib.js"></script>
+</head>
+
+<body>
+
+    <h1>ROS Publisher</h1>
+
+
+    <button id="publishButton">Start Navigation</button>
+
+    <script>
+
+        var ros = new ROSLIB.Ros({
+            url: 'ws://0.0.0.0:9090'
+        });
+
+
+        var publisher = new ROSLIB.Topic({
+            ros: ros,
+            name: '/hello',
+            messageType: 'std_msgs/String'
+        });
+
+
+        var cmdVel = new ROSLIB.Topic({
+            ros: ros,
+            name: '/cmd_vel',
+            messageType: 'geometry_msgs/Twist'
+        });
+
+
+        document.getElementById('publishButton').addEventListener('click', function () {
+
+            var message = new ROSLIB.Message({
+                data: 'Hello, ROS!'
+            });
+
+
+            publisher.publish(message);
+            console.log('Message published!');
+        });
+
+        function handleKeyPress(event) {
+
+            switch (event.key.toLowerCase()) {
+                case 'w':
+                    console.log('You pressed the W key - Move forward');
+
+                    var twist = new ROSLIB.Message({
+                        linear: {
+                            x: 0.2,
+                            y: 0.3,
+                            z: 0.4
+                        },
+                        angular: {
+                            x: 0,
+                            y: 0,
+                            z: 0
+                        }
+                    });
+                    cmdVel.publish(twist);
+                    break;
+                case 'a':
+                    console.log('You pressed the A key - Move left');
+
+                    var twist = new ROSLIB.Message({
+                        linear: {
+                            x: 0.2,
+                            y: 0.3,
+                            z: 0.4
+                        },
+                        angular: {
+                            x: -0.2,
+                            y: -0.3,
+                            z: -0.4
+                        }
+                    });
+                    cmdVel.publish(twist);
+                    break;
+
+                    publisher.publish(message);
+                    console.log('Message published!');
+                    break;
+                case 's':
+                    console.log('You pressed the S key - Move backward');
+
+                    var twist = new ROSLIB.Message({
+                        linear: {
+                            x: -0.2,
+                            y: -0.3,
+                            z: -0.4
+                        },
+                        angular: {
+                            x: 0.2,
+                            y: 0.3,
+                            z: 0.4
+                        }
+                    });
+                    cmdVel.publish(twist);
+                    break;
+
+                    publisher.publish(message);
+                    console.log('Message published!');
+                    break;
+                case 'd':
+                    console.log('You pressed the D key - Move right');
+
+                    var twist = new ROSLIB.Message({
+                        linear: {
+                            x: 0.2,
+                            y: 0.3,
+                            z: 0.4
+                        },
+                        angular: {
+                            x: 0.2,
+                            y: 0.3,
+                            z: 0.4
+                        }
+                    });
+                    cmdVel.publish(twist);
+                    break;
+
+
+                    publisher.publish(message);
+                    console.log('Message published!');
+                    break;
+            }
+        }
+
+
+        ros.on('connection', function () {
+            console.log('Connected to ROS!');
+        });
+
+        ros.on('error', function (error) {
+            console.error('Error connecting to ROS:', error);
+        });
+
+        ros.on('close', function () {
+            console.log('Connection to ROS closed.');
+        });
+
+        document.addEventListener('keydown', handleKeyPress);
+    </script>
+
+</body>
+
+</html>
