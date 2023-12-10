@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+            <title>Capture picture from your webcam</title>
+            <script src="https://cdn.robotwebtools.org/EventEmitter2/current/eventemitter2.js"></script> 
+</head>
+
+        
+<body>
+            <img id="cameraImage" width="640" height="480" alt="Camera Feed">
+            <div id="camera" style="height:auto;width:auto; text-align:left; border-style: solid; "></div>
+            <button onclick = "CameraOn()" type="submit" id="yes">TURN VIDEO ON :]</button>
+            <img src = `${src}` width="200px" height="200px" id="dynamicImage">
+            <button onclick = "CameraOff()" type="submit" id="no">TURN VIDEO OFF :[</button>
+        
+
+  <script type="text/javascript">
+        var src = "";
+
+        function CameraOn() {
+            src = "http://localhost:8080/stream?topic=/rrbot/camera1/image_raw";
+            document.getElementById("dynamicImage").src = src; // Update the src attribute
+            console.log("on");
+        }
+
+        function CameraOff() {
+            src = "#";
+            document.getElementById("dynamicImage").src = src; // Update the src attribute
+            console.log("off");
+        }
+    </script>
+</body>
+</html>
+</script>
+<script type="text/javascript" src = "https://cdn.jsdelivr.net/npm/roslib@1/build/roslib.min.js">
+</script>
+<!-- <script src="main.js"></script> -->
+</body>
+</html>
