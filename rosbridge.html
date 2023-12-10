@@ -127,7 +127,22 @@
                     });
                     cmdVel.publish(twist);
                     break;
-
+                case 'x': 
+                    console.log('You stopped the robot');
+                    var twist = new ROSLIB.Message({
+                        linear: {
+                            x: 0,
+                            y: 0,
+                            z: 0
+                        },
+                        angular: {
+                            x: 0,
+                            y: 0,
+                            z: 0
+                        }
+                    });
+                    cmdVel.publish(twist);
+                    break;
 
                     publisher.publish(message);
                     console.log('Message published!');
