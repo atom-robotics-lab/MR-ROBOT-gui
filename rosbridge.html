@@ -5,23 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ROS Publisher</title>
-
     <script src="./roslib.js"></script>
 </head>
 
 <body>
-
     <h1>ROS Publisher</h1>
-
-
     <button id="publishButton">Start Navigation</button>
 
     <script>
-
         var ros = new ROSLIB.Ros({
             url: 'ws://0.0.0.0:9090'
         });
-
 
         var publisher = new ROSLIB.Topic({
             ros: ros,
@@ -29,127 +23,87 @@
             messageType: 'std_msgs/String'
         });
 
-
         var cmdVel = new ROSLIB.Topic({
             ros: ros,
             name: '/cmd_vel',
             messageType: 'geometry_msgs/Twist'
         });
 
+        var speed = 0.4; // Initial speed
+        var speedIncrement = 1.0; // 10% increase for speed change
+        var shiftKeyPressed = false;
 
         document.getElementById('publishButton').addEventListener('click', function () {
-
             var message = new ROSLIB.Message({
                 data: 'Hello, ROS!'
             });
-
-
             publisher.publish(message);
             console.log('Message published!');
         });
 
-        function handleKeyPress(event) {
+        document.onkeydown = function (event) {
+            handleKeyPress(event);
+        };
 
+        document.onkeyup = function (event) {
+            handleKeyRelease(event);
+        };
+
+        function handleKeyPress(event) {
             switch (event.key.toLowerCase()) {
                 case 'w':
                     console.log('You pressed the W key - Move forward');
-
-                    var twist = new ROSLIB.Message({
-                        linear: {
-                            x: 0.2,
-                            y: 0.3,
-                            z: 0.4
-                        },
-                        angular: {
-                            x: 0,
-                            y: 0,
-                            z: 0
-                        }
-                    });
-                    cmdVel.publish(twist);
+                    publishTwist(0.2, 0.3, 0.4);
                     break;
                 case 'a':
                     console.log('You pressed the A key - Move left');
-
-                    var twist = new ROSLIB.Message({
-                        linear: {
-                            x: 0.2,
-                            y: 0.3,
-                            z: 0.4
-                        },
-                        angular: {
-                            x: -0.2,
-                            y: -0.3,
-                            z: -0.4
-                        }
-                    });
-                    cmdVel.publish(twist);
-                    break;
-
-                    publisher.publish(message);
-                    console.log('Message published!');
+                    publishTwist(0.2, 0.3, 0.4, -0.2, -0.3, -0.4);
                     break;
                 case 's':
                     console.log('You pressed the S key - Move backward');
-
-                    var twist = new ROSLIB.Message({
-                        linear: {
-                            x: -0.2,
-                            y: -0.3,
-                            z: -0.4
-                        },
-                        angular: {
-                            x: 0.2,
-                            y: 0.3,
-                            z: 0.4
-                        }
-                    });
-                    cmdVel.publish(twist);
-                    break;
-
-                    publisher.publish(message);
-                    console.log('Message published!');
+                    publishTwist(-0.2, -0.3, -0.4, 0.0, 0.0, 0.0);
                     break;
                 case 'd':
                     console.log('You pressed the D key - Move right');
-
-                    var twist = new ROSLIB.Message({
-                        linear: {
-                            x: 0.2,
-                            y: 0.3,
-                            z: 0.4
-                        },
-                        angular: {
-                            x: 0.2,
-                            y: 0.3,
-                            z: 0.4
-                        }
-                    });
-                    cmdVel.publish(twist);
+                    publishTwist(0.2, 0.3, 0.4, 0.2, 0.3, 0.4);
                     break;
-                case 'x': 
+                case 'x':
                     console.log('You stopped the robot');
-                    var twist = new ROSLIB.Message({
-                        linear: {
-                            x: 0,
-                            y: 0,
-                            z: 0
-                        },
-                        angular: {
-                            x: 0,
-                            y: 0,
-                            z: 0
-                        }
-                    });
-                    cmdVel.publish(twist);
+                    publishTwist(0, 0, 0, 0, 0, 0);
                     break;
-
-                    publisher.publish(message);
-                    console.log('Message published!');
+                case 'shift':
+                    console.log('Shift key pressed - Increase speed');
+                    if (event.key.toLowerCase() === 'shift') {
+                        console.log('Shift key pressed - Speed reset to default');
+                        shiftKeyPressed = true;
+                    }
                     break;
             }
         }
 
+        function publishTwist(linearX, linearY, linearZ, angularX = 0, angularY = 0, angularZ = 0) {
+            var twist = new ROSLIB.Message({
+                linear: {
+                    x: linearX * (shiftKeyPressed ? speed + speedIncrement : speed),
+                    y: linearY * (shiftKeyPressed ? speed + speedIncrement : speed),
+                    z: linearZ * (shiftKeyPressed ? speed + speedIncrement : speed)
+                },
+                angular: {
+                    x: angularX * (shiftKeyPressed ? speed + speedIncrement : speed),
+                    y: angularY * (shiftKeyPressed ? speed + speedIncrement : speed),
+                    z: angularZ * (shiftKeyPressed ? speed + speedIncrement : speed)
+                }
+            });
+            cmdVel.publish(twist);
+        }
+
+        function handleKeyRelease(event) {
+            // Reset speed when 'Shift' key is released
+            if (event.key.toLowerCase() === 'shift') {
+                console.log('Shift key released - Speed reset to default');
+                shiftKeyPressed = false;
+            }
+        }
 
         ros.on('connection', function () {
             console.log('Connected to ROS!');
@@ -162,10 +116,7 @@
         ros.on('close', function () {
             console.log('Connection to ROS closed.');
         });
-
-        document.addEventListener('keydown', handleKeyPress);
     </script>
-
 </body>
 
 </html>
