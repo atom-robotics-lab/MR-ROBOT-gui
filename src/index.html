@@ -1,187 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-a sa
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mr Robot GUI</title>
-    <link rel="stylesheet" href="globals.css">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="globals.css" />
+    <link rel="stylesheet" href="index.css" />
     <script src="../roslib.js"></script>
-    <script src="../camera.js"></script>
-</head>
+    <script src="./components/camera.js"></script>
+  </head>
 
-<body>
-    
+  <body>
     <div class="main-container">
-        <div class="component-container">
-            <div class="left-container">
-                <h1 class="text-heading">MR-ROBOT</h1>
-                <div class="camera-view view">
-                    <img src = `${src}` width="100%" height="100%" id="dynamicImage" style="border-radius: 1.25rem;">
-                </div>
-                <div class="subheading">
-                    <h3>
-                        CAMERA VIEW
-                    </h3>
-                </div>
-                <div class="button-container">
-                    <button class="camera-on" class="camera-on" onclick="CameraOn()">on</button>
-                    <button class="full-screen-view">full screen view</button>
-                </div>
-            </div>
-            <div class="right-container">
-                <button class="connection-button" id="publishButton">connect</button>
+      <div class="component-container">
+        <div class="left-container">
+          <h1 class="text-heading">MR-ROBOT</h1>
+          <div class="camera-view view">
+            <img
+              src="`${src}`"
+              width="100%"
+              height="100%"
+              id="dynamicImage"
+              style="border-radius: 1.25rem"
+            />
+          </div>
+          <div class="subheading">
+            <h3>CAMERA VIEW</h3>
+          </div>
+          <div class="button-container">
+            <button class="camera-on" class="camera-on" onclick="CameraOn()">
+              on
+            </button>
+            <button class="full-screen-view">full screen view</button>
+          </div>
+        </div>
+        <div class="right-container">
+          <button class="connection-button" id="publishButton">connect</button>
 
-                <div class="2d-mapping-view view">
-                    Rviz
-                </div>
-                <div class="subheading">
-                    <h3>
-                        2d MAPPING
-                    </h3>
-                </div>
-                <div class="button-container">
-                    <button class="set-goal">set goal on map</button>
-                    <button class="start-nav">start navigation</button>
-                </div>
-            </div>
+          <div class="2d-mapping-view view">Rviz</div>
+          <div class="subheading">
+            <h3>2d MAPPING</h3>
+          </div>
+          <div class="button-container">
+            <button class="set-goal">set goal on map</button>
+            <button class="start-nav">start navigation</button>
+          </div>
         </div>
-        <div class="connection-status">
-
+      </div>
+      <div class="connection-status"></div>
+      <div class="status-container">
+        <div class="speedometer">
+          <div class="speedometer-pin"></div>
         </div>
-        <div class="status-container">
-            <div class="speedometer">
-                <div class="speedometer-pin"></div>
-            </div>
-        </div>
+      </div>
     </div>
-    <script>
-        var ros = new ROSLIB.Ros({
-            url: 'ws://localhost:9090'
-        });
-
-        var publisher = new ROSLIB.Topic({
-            ros: ros,
-            name: '/hello',
-            messageType: 'std_msgs/String'
-        });
-
-        var cmdVel = new ROSLIB.Topic({
-            ros: ros,
-            name: '/cmd_vel',
-            messageType: 'geometry_msgs/Twist'
-        });
-
-        var speed = 0.4;
-        var speedIncrement = 4;
-        var shiftKeyPressed = false;
-
-        // Use [0] to access the first element in the collection
-        document.getElementsByClassName('connection-button')[0].addEventListener('click', function () {
-            var message = new ROSLIB.Message({
-                data: 'Hello, ROS!'
-            });
-            publisher.publish(message);
-            console.log('Message published!');
-        });
-
-
-        document.onkeydown = function (event) {
-            handleKeyPress(event);
-        };
-
-        document.onkeyup = function (event) {
-            handleKeyRelease(event);
-        };
-
-        function handleKeyPress(event) {
-            switch (event.key.toLowerCase()) {
-                case 'w':
-                    console.log('You pressed the W key - Move forward');
-                    publishTwist(0.2, 0.3, 0.4);
-                    break;
-                case 'a':
-                    console.log('You pressed the A key - Move left');
-                    publishTwist(0.2, 0.3, 0.4, -0.2, -0.3, -0.4);
-                    break;
-                case 's':
-                    console.log('You pressed the S key - Move backward');
-                    publishTwist(-0.2, -0.3, -0.4, 0.0, 0.0, 0.0);
-                    break;
-                case 'd':
-                    console.log('You pressed the D key - Move right');
-                    publishTwist(0.2, 0.3, 0.4, 0.2, 0.3, 0.4);
-                    break;
-                case 'x':
-                    console.log('You stopped the robot');
-                    publishTwist(0, 0, 0, 0, 0, 0);
-                    break;
-                case 'shift':
-                    console.log('Shift key pressed - Increase speed');
-                    if (event.key.toLowerCase() === 'shift') {
-                        console.log('Shift key pressed - Speed increased');
-                        shiftKeyPressed = true;
-                    }
-                    break;
-            }
-        }
-
-        function publishTwist(linearX, linearY, linearZ, angularX = 0, angularY = 0, angularZ = 0) {
-        var twist = new ROSLIB.Message({
-            linear: {
-                x: linearX * (shiftKeyPressed ? speed + speedIncrement : speed),
-                y: linearY * (shiftKeyPressed ? speed + speedIncrement : speed),
-                z: linearZ * (shiftKeyPressed ? speed + speedIncrement : speed)
-            },
-            angular: {
-                x: angularX * (shiftKeyPressed ? speed + speedIncrement : speed),
-                y: angularY * (shiftKeyPressed ? speed + speedIncrement : speed),
-                z: angularZ * (shiftKeyPressed ? speed + speedIncrement : speed)
-            }
-        });
-
-        // Update speedometer pin rotation based on the speed
-        updateSpeedometerPinRotation(twist.linear.x);
-
-        cmdVel.publish(twist);
-    }
-
-    function updateSpeedometerPinRotation(speedValue) {
-        // Adjust the maximum speed value as needed
-        var maxSpeed = 1.0;
-
-        // Calculate the rotation angle based on the speed
-        var rotationAngle = (speedValue / maxSpeed) * 180 - 90;
-
-        // Get the speedometer pin element
-        var speedometerPin = document.querySelector('.speedometer-pin');
-
-        // Apply the rotation transform to the speedometer pin
-        speedometerPin.style.transform = 'translateX(-50%) rotate(' + rotationAngle + 'deg)';
-    }
-
-        function handleKeyRelease(event) {
-            // Reset speed when 'Shift' key is released
-            if (event.key.toLowerCase() === 'shift') {
-                console.log('Shift key released - Speed reset to default');
-                shiftKeyPressed = false;
-            }
-        }
-
-        ros.on('connection', function () {
-            console.log('Connected to ROS!');
-        });
-
-        ros.on('error', function (error) {
-            console.error('Error connecting to ROS:', error);
-        });
-
-        ros.on('close', function () {
-            console.log('Connection to ROS closed.');
-        });
-    </script>
-</body>
-
+    <script src="./components/rosbridge.js"></script>
+  </body>
 </html>
