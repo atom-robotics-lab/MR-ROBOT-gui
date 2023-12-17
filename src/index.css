@@ -138,3 +138,31 @@ body{
 .speedometer:hover .speedometer-pin {
     transform: translateX(-50%) rotate(90deg);
 }
+#joystickContainer {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 3rem 5rem;
+    /* Center the joystick */
+    box-shadow: 0 0 5px black;
+    /* Add this line for the black outline */
+}
+
+#joystickStick {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: #e74c3c;
+    border-radius: 50%;
+    cursor: pointer;
+    user-select: none;
+    transform: translate(-50%, -50%);
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+#joystickStick:hover {
+    background-color: #c0392b;
+}
