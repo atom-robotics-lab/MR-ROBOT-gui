@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap');
+body{
+    background: linear-gradient(118deg, #010101 0%, #0B0D23 101.36%);
+    font-family: 'Zen Dots', sans-serif;
+    overflow: hidden;
+}
+.main-container{
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    flex-direction: row;
+    margin: 2rem 5rem;
+}
+*{
+    font-family: 'Zen Dots', sans-serif;
+    color: white;
+}
+.component-container{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.text-heading{
+    font-family: 'Zen Dots', sans-serif;
+    font-size: 3.125rem;
+    font-weight: 400;
+    color: white;
+    margin-bottom: 3rem;
+}
+.view{
+    width: 23.125rem;
+    height: 18.625rem;
+    background-color: rgb(106, 106, 106);
+    border: 2px solid red;
+    border-radius: 1.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+.subheading{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 0.62rem;
+}
+.subheading h3 {
+    font-size: 1.25rem;
+}
+.connection-button{
+    width: 23.125rem;
+    height: 3.1875rem;
+    display: flex;
+    justify-content: center;
+    color: black;
+    align-items: center;
+    font-size: 1.6875rem;
+    background: #FFF068;
+    border-radius: 1.25rem;
+    margin-bottom: 3rem;
+    cursor: pointer;
+}
+.button-container{
+    display: flex;
+    flex-direction: column;
+    gap: 1.06rem;
+}
+.camera-on{
+    height: 3.375rem;
+    border-radius: 1.25rem;
+    background: #CAFFA9;
+    color: black;
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+.full-screen-view{
+    height: 3.375rem;
+    border-radius: 1.25rem;
+    background: #F8A9FF;
+    color: black;
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+.set-goal{
+    height: 3.375rem;
+    border-radius: 1.25rem;
+    background: #B0A9FF;
+    color: black;
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+.start-nav{
+    height: 3.375rem;
+    border-radius: 1.25rem;
+    background: #A9FFFF;  
+    color: black;
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+.connection-status{
+    width: 2.125rem;
+    height: 2.1875rem;
+    border-radius: 100%;
+    background: rgba(63, 255, 128, 1);
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+    cursor: pointer;
+}
+.status-container{
+    width: 30%;
+    margin-left: 5rem;
+}
+.speedometer {
+    position: relative;
+    height: 150px;
+    width: 300px;
+    border-radius: 150px 150px 0 0;
+    background: linear-gradient(270deg, #A5E87C 4.7%, #F12A2A 90.27%);
+    overflow: hidden;
+}
+
+.speedometer-pin {
+    position: absolute;
+    width: 10px;
+    height: 100px;
+    background: #fff;
+    border-radius: 5px;
+    left: 50%;
+    bottom: 5%;
+    transform-origin: bottom;
+    transform: translateX(-50%) rotate(-90deg);
+    transition: transform 0.3s ease;
+}
+
+.speedometer:hover .speedometer-pin {
+    transform: translateX(-50%) rotate(90deg);
+}

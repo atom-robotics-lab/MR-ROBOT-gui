@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mr Robot GUI</title>
+    <link rel="stylesheet" href="globals.css">
+    <link rel="stylesheet" href="index.css">
+    <script src="../camera.js"></script>
+</head>
+<body>
+    <div class="main-container">
+        <div class="component-container">
+            <div class="left-container">
+                <h1 class="text-heading">MR-ROBOT</h1>
+                <div class="camera-view view">
+                <img src = `${src}` width="100%" height="100%" id="dynamicImage" style="border-radius: 1.25rem;">
+                </div>
+                <div class="subheading">
+                   <h3>
+                    CAMERA VIEW
+                   </h3> 
+                </div>
+                 
+                <div class="button-container">
+                    <button class="camera-on" onclick="CameraOn()">on</button>
+                    <button class="full-screen-view">full screen view</button>
+                </div>
+            
+            </div>
+            <div class="right-container">
+                <button class="connection-button">connect</button>
+                <div class="2d-mapping-view view">
+                    Rviz
+                </div>
+                <div class="subheading">
+                    <h3>
+                     2d MAPPING
+                    </h3> 
+                 </div>
+                 <div class="button-container">
+                    <button class="set-goal">set goal on map</button>
+                    <button class="start-nav">start navigation</button>
+                 </div> 
+            </div>
+        </div>
+            <div class="connection-status">
+
+            </div>
+        <div class="status-container">
+            <div class="speedometer">
+                <div class="speedometer-pin"></div>
+            </div>
+        </div>    
+    </div>
+</body>
+</html>
