@@ -1,0 +1,211 @@
+.camin {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.top{
+    display: flex;
+    height: 15rem;
+    width:100%;
+}
+
+.mid{
+    display: flex;
+    flex-direction: column;
+    height: 15rem;
+    width:100%;
+    justify-content: space-around;
+
+}
+
+.bottom{
+    display: flex;
+    height: 15rem;
+    width:100%;
+    justify-content: space-between;
+}
+
+.minimap{
+    border: solid #000;
+    border-width: 10px;
+    height: 220px;
+    width: 215px;
+}
+
+.speedometer {
+    position: relative;
+    height: 150px;
+    width: 300px;
+    border-radius: 150px 150px 0 0;
+    background: linear-gradient(270deg, #A5E87C 4.7%, #F12A2A 90.27%);
+    overflow: hidden;
+    margin-left: 100px;
+    margin-top: 50px;
+}
+
+    .speedometer-pin {
+        position: absolute;
+        width: 10px;
+        height: 100px;
+        background: #fff;
+        border-radius: 5px;
+        left: 50%;
+        bottom: 5%;
+        transform-origin: bottom;
+        transform: translateX(-50%) rotate(-90deg);
+        transition: transform 0.3s ease;
+    }
+    
+    .speedometer:hover .speedometer-pin {
+        transform: translateX(-50%) rotate(90deg);
+    }
+
+
+    #joystickContainer {
+        position: relative;
+        width: 150px;
+        height: 150px;
+        background-color: #ffffff;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 3rem 5rem;
+        /* Center the joystick */
+        box-shadow: 0 0 5px black;
+        /* Add this line for the black outline */
+    }
+    
+    #joystickStick {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background-color: #e74c3c;
+        border-radius: 50%;
+        cursor: pointer;
+        user-select: none;
+        transform: translate(-50%, -50%);
+        transition: background-color 0.3s, transform 0.1s;
+    }
+    
+    #joystickStick:hover {
+        background-color: #c0392b;
+    }
+
+    .sidebtn {
+    border: hidden;
+    background-color: #4D1EFC;
+    color: #FFFFFF;
+    height: 60px;
+    width: 150px;
+
+}
+
+
+.logo{
+    background-color: #000;
+    opacity: 0.8;
+    height: 100px;
+    width: 250px;
+    content: "Ramesh" ;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .sidebtn {
+    position: relative;
+    top: 275px;
+    border: hidden;
+    background-color: #4D1EFC;
+    color: #FFFFFF;
+    height: 60px;
+    width: 130px;
+}
+
+#On {
+    margin-right: 1%;
+}
+
+
+#mood {
+    margin-top: 10px;
+}
+
+#goal {
+    margin-top: 10px;
+
+}
+
+.minimap{
+    border: solid #000;
+    border-width: 10px;
+    height: 210px;
+    width: 210px;
+    margin-top: 300px;
+}
+
+
+.speedometer {
+    position: relative;
+    height: 150px;
+    width: 300px;
+    border-radius: 150px 150px 0 0;
+    background: linear-gradient(270deg, #A5E87C 4.7%, #F12A2A 90.27%);
+    overflow: hidden;
+    margin-bottom: 0px;
+    margin-left: 300px;
+}
+
+    .speedometer-pin {
+        position: absolute;
+        width: 10px;
+        height: 100px;
+        background: #fff;
+        border-radius: 5px;
+        left: 50%;
+        bottom: 5%;
+        transform-origin: bottom;
+        transform: translateX(-50%) rotate(-90deg);
+        transition: transform 0.3s ease;
+    }
+    
+    .speedometer:hover .speedometer-pin {
+        transform: translateX(-50%) rotate(90deg);
+    }
+
+    .camerainput{
+        height: 100%;
+        width: 100%;
+    } */
