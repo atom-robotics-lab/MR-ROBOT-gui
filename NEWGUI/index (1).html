@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="globals.css" />
+    <script src="../roslib.js"></script>
+    <script src="../src/components/camera.js"></script>
+    <script src="../src/components/fullMapView.js"></script>
+  </head>
+  <body>
+    <div class="main-div">
+      <div class="FullMapView" id="MapView">
+        <div class="cross-button" onclick="MapViewClose()"></div>
+        <img src="`${MapSrc}`" alt="" />
+      </div>
+      <div class="image-view">
+        <img
+          src="`${src}`"
+          alt=""
+          width="100%"
+          height="100%"
+          id="dynamicImage"
+        />
+      </div>
+      <div class="logo-div">
+        <div class="logo">
+          <div class="img-text">
+            <img
+              class="logo-img"
+              src="../src/images/logo.png"
+              alt="Logo"
+              width="60px"
+              height="60px"
+            />
+            <div class="company-name">
+              <h2>mr. robot</h2>
+              <p>an a.t.o.m robotics lab product</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- logo -->
+      <!-- button grp -->
+      <div class="button-grp">
+        <div class="button-grp-secondary">
+          <button
+            class="on-button"
+            onclick="CameraOn()"
+            id="publishButton"
+          ></button>
+          <button class="set-goal" onclick="FullMapView()"></button>
+        </div>
+      </div>
+      <!-- button grp -->
+      <!-- bottom-bar -->
+      <div class="bottom-bar">
+        <div class="map-view" onclick="FullMapView()">map view</div>
+        <div class="speedometer">
+          <img
+            src="../src/images/Speedometer.webp"
+            alt=""
+            height="275px"
+            width="275px"
+          />
+          <div class="speedometer-pin"></div>
+        </div>
+        <div id="joystickContainer">
+          <div id="joystickStick"></div>
+        </div>
+      </div>
+      <!-- bottom-bar -->
+    </div>
+    <script src="../src/components/joystick.js"></script>
+    <script src="../src/components/rosbridge.js"></script>
+  </body>
+</html>

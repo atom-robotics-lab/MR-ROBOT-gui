@@ -1,0 +1,164 @@
+@import url("https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap");
+* {
+  font-family: "Zen Dots", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.main-div {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 200px;
+}
+.logo {
+  background: url("../src/images/logo-trapezium.png");
+  background-repeat: no-repeat;
+  height: 90px;
+  display: flex;
+  align-items: center;
+}
+.img-text {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+}
+.company-name {
+  display: flex;
+  flex-direction: column;
+}
+.company-name h2 {
+  color: white;
+}
+.company-name p {
+  font-size: 0.5rem;
+  color: white;
+}
+.logo-img {
+  filter: brightness(2);
+}
+.logo-div {
+  height: 33.33%;
+}
+.button-grp {
+  height: 33.33%;
+  display: flex;
+}
+.button-grp-secondary {
+  display: flex;
+  flex-direction: column;
+}
+.on-button {
+  background: url("../src/images/power.png");
+  height: 100px;
+  width: 120px;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease-in-out all;
+}
+.on-button:hover {
+  background-position-x: 8px;
+}
+.set-goal {
+  background: url("../src/images/setGoal.png");
+  position: relative;
+  height: 100px;
+  width: 420px;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease-in-out all;
+}
+.set-gaol:hover {
+  background-position-x: 20px;
+}
+.map-view {
+  height: 200px;
+  width: 200px;
+  border: 10px solid red;
+}
+.bottom-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.speedometer {
+  position: relative;
+  height: 195px;
+  width: 275px;
+
+  overflow: hidden;
+}
+.speedometer-pin {
+  position: absolute;
+  width: 10px;
+  height: 90px;
+  background: #ffcf4c;
+  border-radius: 5px;
+  left: 50%;
+  bottom: 15%;
+  transform-origin: bottom;
+  transform: translateX(-50%) rotate(-90deg);
+  transition: transform 0.3s ease;
+}
+.speedometer:hover .speedometer-pin {
+  transform: translateX(-50%) rotate(90deg);
+}
+#joystickContainer {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  background-color: #fffefe;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 3rem 5rem;
+  /* Center the joystick */
+  box-shadow: 0 0 5px black;
+  /* Add this line for the black outline */
+}
+
+#joystickStick {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: #e74c3c;
+  border-radius: 50%;
+  cursor: pointer;
+  user-select: none;
+  overflow: visible;
+  transform: translate(-50%, -50%);
+  transition: background-color 0.3s, transform 0.1s;
+}
+
+#joystickStick:hover {
+  background-color: #c0392b;
+}
+.image-view {
+  position: absolute;
+  z-index: -999;
+  height: 100%;
+  width: 100%;
+  background-color: #ffe4e4;
+}
+.FullMapView {
+  position: absolute;
+  z-index: 9999;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.425);
+}
+#MapView {
+  visibility: hidden;
+}
+.cross-button {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  z-index: 9999;
+  background-color: #fffefe;
+  right: 0;
+}
