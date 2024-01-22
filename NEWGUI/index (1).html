@@ -9,12 +9,41 @@
     <script src="../roslib.js"></script>
     <script src="../src/components/camera.js"></script>
     <script src="../src/components/fullMapView.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/easeljs@1/lib/easeljs.min.js"
+></script>
+  
+<script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/eventemitter2@6/lib/eventemitter2.min.js"
+  ></script>
+  
+  <script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/roslib@1/build/roslib.min.js"
+  ></script>
+  
+  <script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/ros2d@0/build/ros2d.min.js"
+  ></script>
+  
+  <script src="../src/components/nav2d.min.js"></script>
+
+  <script src="../src/components/rvizembedsmall.js"></script>
+
+
+  <!-- <body onload="init()">
+    <h1>rviz embed</h1>
+    <div id="map" style="height: 600px; width: 500px"></div>
+  </body>
+</html> -->
+
   </head>
-  <body>
+  <body onload="init()">
     <div class="main-div">
       <div class="FullMapView" id="MapView">
         <div class="cross-button" onclick="MapViewClose()"></div>
-        <img src="`${MapSrc}`" alt="" />
+        <div id="map" class="fullscreenmap"></div>
       </div>
       <div class="image-view">
         <img
@@ -47,7 +76,7 @@
       <div class="button-grp">
         <div class="button-grp-secondary">
           <button
-            class="on-button"
+            class="on-button connection-button" 
             onclick="CameraOn()"
             id="publishButton"
           ></button>
@@ -57,7 +86,10 @@
       <!-- button grp -->
       <!-- bottom-bar -->
       <div class="bottom-bar">
-        <div class="map-view" onclick="FullMapView()">map view</div>
+        <div class="map-view" id="smallmap" onclick="FullMapView()">
+        
+        </div>
+        
         <div class="speedometer">
           <img
             src="../src/images/Speedometer.webp"
@@ -73,7 +105,8 @@
       </div>
       <!-- bottom-bar -->
     </div>
+    <script src="../src/components/rvizembed.js"></script>
     <script src="../src/components/joystick.js"></script>
-    <script src="../src/components/rosbridge.js"></script>
+    <script src="../src/components/rvizembed.js"></script>
   </body>
 </html>
