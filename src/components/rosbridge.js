@@ -102,7 +102,7 @@ var ros = new ROSLIB.Ros({
     var speedometerPin = document.querySelector(".speedometer-pin");
 
     speedometerPin.style.transform =
-      "translateX(-50%) rotate(" + rotationAngle + "deg)";
+    `translateX(-50%) rotate(${rotationAngle}deg)`
   }
 
   function handleKeyRelease(event) {
