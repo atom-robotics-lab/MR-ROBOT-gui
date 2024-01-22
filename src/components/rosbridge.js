@@ -95,7 +95,7 @@ var ros = new ROSLIB.Ros({
   }
 
   function updateSpeedometerPinRotation(speedValue) {
-    var maxSpeed = 1.0;
+    var maxSpeed = 1.5;
 
     var rotationAngle = (speedValue / maxSpeed) * 180 - 90;
 
