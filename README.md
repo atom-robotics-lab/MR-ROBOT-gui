@@ -156,6 +156,7 @@ The simulation should start as shown in the following:
 roslaunch mr_robot_nav navigation.launch
 ```
 
+
 ![rvizpost](https://github.com/atom-robotics-lab/MR-ROBOT-gui/assets/150596140/597ec879-8180-48f8-b3a5-40186940820e)
 
 
@@ -268,4 +269,15 @@ Thank you for joining the movement and contributing to the growth of MR-ROBOT-gu
 ## License
 [Apache 2.0]("https://opensource.org/license/apache-2-0/")
 
+## Contact Us
 
+If you have any feedback, please reach out to us at:  
+Our Socials - [Linktree](https://linktr.ee/atomlabs)
+## Acknowledgments
+
+* [Our wiki](https://atom-robotics-lab.github.io/wiki)
+* [ROS Official Documentation](http://wiki.ros.org/Documentation)
+* [Opencv Official Documentation](https://docs.opencv.org/4.x/)
+* [Mediapipe Documentation](https://mediapipe.readthedocs.io/en/latest/)
+* [Gazebo Tutorials](https://classic.gazebosim.org/tutorials)
+* [Ubuntu Installation guide](https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview)
