@@ -27,7 +27,7 @@ function submit() {
   localStorage.setItem("formData", JSON.stringify(formData));
 
   // Redirect to index.html
-  window.location.href = "index (1).html";
+  window.location.href = "./main.html";
 }
 
 // Add this function to retrieve the form data from local storage on index.html
