@@ -147,6 +147,8 @@ roscore
 ```bash
 roslaunch mr_robot_gazebo turtlebot3_house.launch camera_enabled:=true lidar_enabled:=true kinect_enabled:=true
 ```
+The simulation should start as shown in the following:
+
 ![image](https://github.com/atom-robotics-lab/MR-ROBOT-gui/assets/150596140/a101ade1-e541-4c70-96c5-664bb7e6fa1c)
 
 
@@ -164,9 +166,7 @@ roslaunch mr_robot_nav navigation.launch
 <node pkg="robot_pose_publisher" type="robot_pose_publisher" respawn="false" name="posepub"></node>
 ```
 
-The simulation should start as shown in the following:
 
-PHOTO
 
 
 ### Step 2: Initializing Web Connectivity
