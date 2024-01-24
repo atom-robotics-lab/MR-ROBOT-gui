@@ -228,6 +228,7 @@ Calling all enthusiasts! We invite you to be part of the MR-ROBOT-gui community 
      git checkout -b feature/new-feature
      ```
      or
+     
      ```bash
      git checkout -b bugfix/issue-number
      ```
