@@ -42,8 +42,8 @@ Get ready to revolutionize your robot control experience. MR-ROBOT-gui: Elevatin
 
 **Effortless Initialization**: Initiate the magic remotely by connecting to your ROS workspace server IP and your local IPv4. No need to be a tech wizard - it's as easy as pie. Just a few clicks, and you're ready to roll!
 
-[!ATTENTION]
-Only for the **Bold**: Dive into this adventure only if you've got all the prerequisite packages installed. But trust us, the thrill is worth it!
+>[!NOTE]
+>Only for the **Bold**: Dive into this adventure only if you've got all the prerequisite packages installed.
 
 
 
