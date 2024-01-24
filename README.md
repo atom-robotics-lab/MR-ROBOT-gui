@@ -144,10 +144,15 @@ roscore
 ```bash
 roslaunch mr_robot_gazebo turtlebot3_house.launch camera_enabled:=true lidar_enabled:=true kinect_enabled:=true
 ```
+![gazebo](https://github.com/atom-robotics-lab/MR-ROBOT-gui/assets/150596140/8be4e865-dd2c-4919-a575-09d8afdd6767)
+![rvizpre](https://github.com/atom-robotics-lab/MR-ROBOT-gui/assets/150596140/9ae7a7d2-3511-441c-b0ba-224376dbb2fb)
 
 ```bash
 roslaunch mr_robot_nav navigation.launch
 ```
+
+![rvizpost](https://github.com/atom-robotics-lab/MR-ROBOT-gui/assets/150596140/597ec879-8180-48f8-b3a5-40186940820e)
+
 
 >[!IMPORTANT]
 >Before starting the nav package, ensure the move_base launch file includes the following command for flawless execution:
@@ -196,6 +201,7 @@ UI PHOTO
    - Press "S" to move backward.
    - Press "A" to move left.
    - Press "D" to move right.
+   - Press "SHIFT" to increase speed.
 
    Navigate with the ease of keystrokes and command the robot with precision.
 
