@@ -125,7 +125,10 @@ To embark on this thrilling journey with MR-ROBOT-gui, make sure your toolkit is
 
 - **Ubuntu 20.04**: The stage for our adventure is set on the robust foundation of [Ubuntu 20.04]("https://releases.ubuntu.com/focal/"). Ensure you have it ready to go.
 
-- **Rosbridge Suite**: The silent conductor orchestrating seamless communication between our UI and the robot's control system. Make sure Rosbridge Suite is in your toolkit.
+- **Rosbridge Suite**: The silent conductor orchestrating seamless communication between our UI and the robot's control system. Make sure Rosbridge Suite is in your toolkit. TO install use the following command:
+  ``` bash
+  sudo apt-get install ros-noetic-rosbridge-server
+  ```
 
 - **Web Video Server**: Transforming the visual experience, this server is a must. Install it using the [GitHub repository](https://github.com/RobotWebTools/web_video_server) to ensure your visuals are top-notch.
 
@@ -144,10 +147,18 @@ roscore
 ```bash
 roslaunch mr_robot_gazebo turtlebot3_house.launch camera_enabled:=true lidar_enabled:=true kinect_enabled:=true
 ```
+The simulation should commence as indicated below:
+
+![image](https://github.com/atom-robotics-lab/MR-ROBOT-gui/assets/150596140/a101ade1-e541-4c70-96c5-664bb7e6fa1c)
+
 
 ```bash
 roslaunch mr_robot_nav navigation.launch
 ```
+
+
+![rvizpost](https://github.com/atom-robotics-lab/MR-ROBOT-gui/assets/150596140/597ec879-8180-48f8-b3a5-40186940820e)
+
 
 >[!IMPORTANT]
 >Before starting the nav package, ensure the move_base launch file includes the following command for flawless execution:
@@ -156,9 +167,7 @@ roslaunch mr_robot_nav navigation.launch
 <node pkg="robot_pose_publisher" type="robot_pose_publisher" respawn="false" name="posepub"></node>
 ```
 
-The simulation should start as shown in the following:
 
-PHOTO
 
 
 ### Step 2: Initializing Web Connectivity
@@ -196,6 +205,7 @@ UI PHOTO
    - Press "S" to move backward.
    - Press "A" to move left.
    - Press "D" to move right.
+   - Press "SHIFT" to increase speed.
 
    Navigate with the ease of keystrokes and command the robot with precision.
 
@@ -219,6 +229,7 @@ Calling all enthusiasts! We invite you to be part of the MR-ROBOT-gui community 
      git checkout -b feature/new-feature
      ```
      or
+     
      ```bash
      git checkout -b bugfix/issue-number
      ```
@@ -258,4 +269,15 @@ Thank you for joining the movement and contributing to the growth of MR-ROBOT-gu
 ## License
 [Apache 2.0]("https://opensource.org/license/apache-2-0/")
 
+## Contact Us
 
+If you have any feedback, please reach out to us at:  
+Our Socials - [Linktree](https://linktr.ee/atomlabs)
+## Acknowledgments
+
+* [Our wiki](https://atom-robotics-lab.github.io/wiki)
+* [ROS Official Documentation](http://wiki.ros.org/Documentation)
+* [Opencv Official Documentation](https://docs.opencv.org/4.x/)
+* [Mediapipe Documentation](https://mediapipe.readthedocs.io/en/latest/)
+* [Gazebo Tutorials](https://classic.gazebosim.org/tutorials)
+* [Ubuntu Installation guide](https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview)
