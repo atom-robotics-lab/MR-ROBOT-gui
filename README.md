@@ -125,7 +125,10 @@ To embark on this thrilling journey with MR-ROBOT-gui, make sure your toolkit is
 
 - **Ubuntu 20.04**: The stage for our adventure is set on the robust foundation of [Ubuntu 20.04]("https://releases.ubuntu.com/focal/"). Ensure you have it ready to go.
 
-- **Rosbridge Suite**: The silent conductor orchestrating seamless communication between our UI and the robot's control system. Make sure Rosbridge Suite is in your toolkit.
+- **Rosbridge Suite**: The silent conductor orchestrating seamless communication between our UI and the robot's control system. Make sure Rosbridge Suite is in your toolkit. TO install use the following command:
+  ``` bash
+  sudo apt-get install ros-noetic-rosbridge-server
+  ```
 
 - **Web Video Server**: Transforming the visual experience, this server is a must. Install it using the [GitHub repository](https://github.com/RobotWebTools/web_video_server) to ensure your visuals are top-notch.
 
@@ -145,7 +148,7 @@ roscore
 roslaunch mr_robot_gazebo turtlebot3_house.launch camera_enabled:=true lidar_enabled:=true kinect_enabled:=true
 ```
 ![gazebo](https://github.com/atom-robotics-lab/MR-ROBOT-gui/assets/150596140/8be4e865-dd2c-4919-a575-09d8afdd6767)
-![rvizpre](https://github.com/atom-robotics-lab/MR-ROBOT-gui/assets/150596140/9ae7a7d2-3511-441c-b0ba-224376dbb2fb)
+
 
 ```bash
 roslaunch mr_robot_nav navigation.launch
