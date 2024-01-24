@@ -1,244 +1,257 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ROS Publisher</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 20px;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 20px;
+      }
 
-        h1 {
-            margin-bottom: 20px;
-        }
+      h1 {
+        margin-bottom: 20px;
+      }
 
-        #animation-container {
-            width: 495px;
-            height: 279px;
-            border: 1px solid #ccc;
-            overflow: hidden;
-            margin: 20px auto;
-        }
+      #animation-container {
+        width: 495px;
+        height: 279px;
+        border: 1px solid #ccc;
+        overflow: hidden;
+        margin: 20px auto;
+      }
 
-        #animation {
-            max-width: 100%;
-            max-height: 100%;
-            display: block;
-            margin: auto;
-            animation-duration: 1s;
-            animation-iteration-count: infinite;
-        }
+      #animation {
+        max-width: 100%;
+        max-height: 100%;
+        display: block;
+        margin: auto;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+      }
 
-        #publishButton {
-            margin: 20px;
-            padding: 10px;
-            font-size: 16px;
-            cursor: pointer;
-        }
+      #publishButton {
+        margin: 20px;
+        padding: 10px;
+        font-size: 16px;
+        cursor: pointer;
+      }
     </style>
 
-    <script src="/home/aastha/catkin_ws/src/MR-Robot/MR-ROBOT-gui/roslib.js"></script>
-</head>
+    <script src="../../roslib.js"></script>
+  </head>
 
-<body>
-
+  <body>
     <h1>ROS Publisher</h1>
 
     <div id="animation-container">
-        <img id="animation" src="" alt="Animation">
+      <img id="animation" src="" alt="Animation" />
     </div>
 
     <button id="publishButton">Publish Message</button>
 
     <script>
-        var ros = new ROSLIB.Ros({
-            url: 'ws://localhost:9090',
-        });
+      var ros = new ROSLIB.Ros({
+        url: "ws://localhost:9090",
+      });
 
-        var publisher = new ROSLIB.Topic({
-            ros: ros,
-            name: '/hello',
-            messageType: 'std_msgs/String',
-        });
+      var publisher = new ROSLIB.Topic({
+        ros: ros,
+        name: "/hello",
+        messageType: "std_msgs/String",
+      });
 
-        var cmdVel = new ROSLIB.Topic({
-            ros: ros,
-            name: '/cmd_vel',
-            messageType: 'geometry_msgs/Twist',
-        });
+      var cmdVel = new ROSLIB.Topic({
+        ros: ros,
+        name: "/cmd_vel",
+        messageType: "geometry_msgs/Twist",
+      });
 
-        var speed = 0.4;
-        var speedIncrement = 4;
-        var shiftKeyPressed = false;
-        var isMoving = false;
-        var boredTimer = null;
+      var speed = 0.4;
+      var speedIncrement = 4;
+      var shiftKeyPressed = false;
+      var isMoving = false;
+      var boredTimer = null;
 
-        var odomTopic = new ROSLIB.Topic({
-            ros: ros,
-            name: '/odom',
-            messageType: 'nav_msgs/Odometry',
-        });
+      var odomTopic = new ROSLIB.Topic({
+        ros: ros,
+        name: "/odom",
+        messageType: "nav_msgs/Odometry",
+      });
 
-        var lastReceivedTime = 0;
-        var lastPosition = null;
+      var lastReceivedTime = 0;
+      var lastPosition = null;
 
-        odomTopic.subscribe(function (message) {
-            var currentTime = new Date().getTime();
-            if (currentTime - lastReceivedTime > 60000) {
-                console.log('Received pose: ', message.pose.pose.position);
+      odomTopic.subscribe(function (message) {
+        var currentTime = new Date().getTime();
+        if (currentTime - lastReceivedTime > 60000) {
+          console.log("Received pose: ", message.pose.pose.position);
 
-                if (isCollision(message.pose.pose.position)) {
-                    playGif('dead');
-                }
+          if (isCollision(message.pose.pose.position)) {
+            playGif("dead");
+          }
 
-                lastReceivedTime = currentTime;
-                lastPosition = message.pose.pose.position;
-            }
-        });
-
-        function isCollision(currentPosition) {
-            if (lastPosition && lastPosition.x === currentPosition.x) {
-                // Assuming collision if x position remains the same for 1 minute
-                return true;
-            }
-            return false;
+          lastReceivedTime = currentTime;
+          lastPosition = message.pose.pose.position;
         }
+      });
 
-        playGif('default');
+      function isCollision(currentPosition) {
+        if (lastPosition && lastPosition.x === currentPosition.x) {
+          // Assuming collision if x position remains the same for 1 minute
+          return true;
+        }
+        return false;
+      }
 
-        document.getElementById('publishButton').addEventListener('click', function () {
-            var message = new ROSLIB.Message({
-                data: 'Hello, ROS!',
-            });
+      playGif("default");
 
-            publisher.publish(message);
-            console.log('Message published!');
+      document
+        .getElementById("publishButton")
+        .addEventListener("click", function () {
+          var message = new ROSLIB.Message({
+            data: "Hello, ROS!",
+          });
+
+          publisher.publish(message);
+          console.log("Message published!");
         });
 
-        document.onkeydown = function (event) {
-            handleKeyPress(event);
-        };
+      document.onkeydown = function (event) {
+        handleKeyPress(event);
+      };
 
-        document.onkeyup = function (event) {
-            handleKeyRelease(event);
-        };
+      document.onkeyup = function (event) {
+        handleKeyRelease(event);
+      };
 
-        function handleKeyPress(event) {
-            clearTimeout(boredTimer);
-            boredTimer = null;
+      function handleKeyPress(event) {
+        clearTimeout(boredTimer);
+        boredTimer = null;
 
-            switch (event.key.toLowerCase()) {
-                case 'w':
-                    console.log('You pressed the W key - Move forward');
-                    publishTwist(0.2, 0.3, 0.4);
-                    playGif('happy');
-                    break;
-                case 'a':
-                    console.log('You pressed the A key - Move left');
-                    publishTwist(0.2, 0.3, 0.4, -0.2, -0.3, -0.4);
-                    playGif('default');
-                    break;
-                case 's':
-                    console.log('You pressed the S key - Move backward');
-                    publishTwist(-0.2, -0.3, -0.4, 0.0, 0.0, 0.0);
-                    playGif('angry');
-                    break;
-                case 'd':
-                    console.log('You pressed the D key - Move right');
-                    publishTwist(0.2, 0.3, 0.4, 0.2, 0.3, 0.4);
-                    playGif('default');
-                    break;
-                case 'x':
-                    console.log('You stopped the robot');
-                    publishTwist(0, 0, 0, 0, 0, 0);
-                    playGif('angry');
-                    break;
-                case 'shift':
-                    console.log('Shift key pressed - Increase speed and play excited animation');
-                    if (event.key.toLowerCase() === 'shift') {
-                        console.log('Shift key pressed - Speed increased');
-                        shiftKeyPressed = true;
-                        playGif('excited');
-                    }
-                    break;
+        switch (event.key.toLowerCase()) {
+          case "w":
+            console.log("You pressed the W key - Move forward");
+            publishTwist(0.2, 0.3, 0.4);
+            playGif("happy");
+            break;
+          case "a":
+            console.log("You pressed the A key - Move left");
+            publishTwist(0.2, 0.3, 0.4, -0.2, -0.3, -0.4);
+            playGif("default");
+            break;
+          case "s":
+            console.log("You pressed the S key - Move backward");
+            publishTwist(-0.2, -0.3, -0.4, 0.0, 0.0, 0.0);
+            playGif("angry");
+            break;
+          case "d":
+            console.log("You pressed the D key - Move right");
+            publishTwist(0.2, 0.3, 0.4, 0.2, 0.3, 0.4);
+            playGif("default");
+            break;
+          case "x":
+            console.log("You stopped the robot");
+            publishTwist(0, 0, 0, 0, 0, 0);
+            playGif("angry");
+            break;
+          case "shift":
+            console.log(
+              "Shift key pressed - Increase speed and play excited animation"
+            );
+            if (event.key.toLowerCase() === "shift") {
+              console.log("Shift key pressed - Speed increased");
+              shiftKeyPressed = true;
+              playGif("excited");
             }
+            break;
         }
+      }
 
-        function publishTwist(linearX, linearY, linearZ, angularX = 0, angularY = 0, angularZ = 0) {
-            var twist = new ROSLIB.Message({
-                linear: {
-                    x: linearX * (shiftKeyPressed ? speed + speedIncrement : speed),
-                    y: linearY * (shiftKeyPressed ? speed + speedIncrement : speed),
-                    z: linearZ * (shiftKeyPressed ? speed + speedIncrement : speed),
-                },
-                angular: {
-                    x: angularX * (shiftKeyPressed ? speed + speedIncrement : speed),
-                    y: angularY * (shiftKeyPressed ? speed + speedIncrement : speed),
-                    z: angularZ * (shiftKeyPressed ? speed + speedIncrement : speed),
-                },
-            });
-
-            cmdVel.publish(twist);
-
-            isMoving = (linearX !== 0 || linearY !== 0 || linearZ !== 0 || angularX !== 0 || angularY !== 0 || angularZ !== 0);
-
-            if (!isMoving) {
-                boredTimer = setTimeout(function () {
-                    console.log("MR_Robot is bored");
-                    playGif('bored');
-                }, 10000);
-            }
-        }
-
-        function handleKeyRelease(event) {
-            if (event.key.toLowerCase() === 'shift') {
-                console.log('Shift key released - Speed reset to default');
-                shiftKeyPressed = false;
-                playGif('excited');
-            }
-        }
-
-        function playGif(mood = 'happy') {
-            var animation = document.getElementById('animation');
-
-            switch (mood) {
-                case 'happy':
-                    animation.src = '/home/aastha/Anims/happy.gif';
-                    break;
-                case 'angry':
-                    animation.src = '/home/aastha/Anims/angry.gif';
-                    break;
-                case 'bored':
-                    animation.src = '/home/aastha/Anims/bored.gif';
-                    break;
-                case 'excited':
-                    animation.src = '/home/aastha/Anims/excited.gif';
-                    break;
-                case 'dead':
-                    animation.src = '/home/aastha/Anims/dead.gif';
-                    break;
-                default:
-                    animation.src = '/home/aastha/Anims/default.gif';
-            }
-        }
-
-        ros.on('connection', function () {
-            console.log('Connected to ROS!');
+      function publishTwist(
+        linearX,
+        linearY,
+        linearZ,
+        angularX = 0,
+        angularY = 0,
+        angularZ = 0
+      ) {
+        var twist = new ROSLIB.Message({
+          linear: {
+            x: linearX * (shiftKeyPressed ? speed + speedIncrement : speed),
+            y: linearY * (shiftKeyPressed ? speed + speedIncrement : speed),
+            z: linearZ * (shiftKeyPressed ? speed + speedIncrement : speed),
+          },
+          angular: {
+            x: angularX * (shiftKeyPressed ? speed + speedIncrement : speed),
+            y: angularY * (shiftKeyPressed ? speed + speedIncrement : speed),
+            z: angularZ * (shiftKeyPressed ? speed + speedIncrement : speed),
+          },
         });
 
-        ros.on('error', function (error) {
-            console.error('Error connecting to ROS:', error);
-        });
+        cmdVel.publish(twist);
 
-        ros.on('close', function () {
-            console.log('Connection to ROS closed.');
-        });
+        isMoving =
+          linearX !== 0 ||
+          linearY !== 0 ||
+          linearZ !== 0 ||
+          angularX !== 0 ||
+          angularY !== 0 ||
+          angularZ !== 0;
+
+        if (!isMoving) {
+          boredTimer = setTimeout(function () {
+            console.log("MR_Robot is bored");
+            playGif("bored");
+          }, 10000);
+        }
+      }
+
+      function handleKeyRelease(event) {
+        if (event.key.toLowerCase() === "shift") {
+          console.log("Shift key released - Speed reset to default");
+          shiftKeyPressed = false;
+          playGif("excited");
+        }
+      }
+
+      function playGif(mood = "happy") {
+        var animation = document.getElementById("animation");
+
+        switch (mood) {
+          case "happy":
+            animation.src = "../images/Anims/happy.gif";
+            break;
+          case "angry":
+            animation.src = "../images/Anims/angry.gif";
+            break;
+          case "bored":
+            animation.src = "../images/Anims/bored.gif";
+            break;
+          case "excited":
+            animation.src = "../images/Anims/excited.gif";
+            break;
+          case "dead":
+            animation.src = "../images/Anims/dead.gif";
+            break;
+          default:
+            animation.src = "../images/Anims/default.gif";
+        }
+      }
+
+      ros.on("connection", function () {
+        console.log("Connected to ROS!");
+      });
+
+      ros.on("error", function (error) {
+        console.error("Error connecting to ROS:", error);
+      });
+
+      ros.on("close", function () {
+        console.log("Connection to ROS closed.");
+      });
     </script>
-
-</body>
-
+  </body>
 </html>
