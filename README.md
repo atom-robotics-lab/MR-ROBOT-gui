@@ -147,7 +147,7 @@ roscore
 ```bash
 roslaunch mr_robot_gazebo turtlebot3_house.launch camera_enabled:=true lidar_enabled:=true kinect_enabled:=true
 ```
-The simulation should start as shown in the following:
+The simulation should commence as indicated below:
 
 ![image](https://github.com/atom-robotics-lab/MR-ROBOT-gui/assets/150596140/a101ade1-e541-4c70-96c5-664bb7e6fa1c)
 
