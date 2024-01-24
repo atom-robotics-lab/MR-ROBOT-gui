@@ -149,14 +149,12 @@ roslaunch mr_robot_gazebo turtlebot3_house.launch camera_enabled:=true lidar_ena
 ```
 The simulation should start as shown in the following:
 
-
 ![image](https://github.com/atom-robotics-lab/MR-ROBOT-gui/assets/150596140/a101ade1-e541-4c70-96c5-664bb7e6fa1c)
 
 
 ```bash
 roslaunch mr_robot_nav navigation.launch
 ```
-
 
 ![rvizpost](https://github.com/atom-robotics-lab/MR-ROBOT-gui/assets/150596140/597ec879-8180-48f8-b3a5-40186940820e)
 
