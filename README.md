@@ -149,8 +149,8 @@ roslaunch mr_robot_gazebo turtlebot3_house.launch camera_enabled:=true lidar_ena
 roslaunch mr_robot_nav navigation.launch
 ```
 
-[!IMPORTANT]
-Before starting the nav package, ensure the move_base launch file includes the following command for flawless execution:
+>[!IMPORTANT]
+>Before starting the nav package, ensure the move_base launch file includes the following command for flawless execution:
 
 ```bash
 <node pkg="robot_pose_publisher" type="robot_pose_publisher" respawn="false" name="posepub"></node>
