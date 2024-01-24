@@ -99,11 +99,33 @@
       });
 
       function isCollision(currentPosition) {
-        if (lastPosition && lastPosition.x === currentPosition.x) {
-          // Assuming collision if x position remains the same for 1 minute
-          return true;
+        let lastPose_x_NewLow = lastPosition.x - 0.0001 * lastPosition.x;
+        let lastPose_x_NewHigh = lastPosition.x + 0.0001 * lastPosition.x;
+        let x_static =
+          currentPosition.x > lastPose_x_NewLow
+            ? currentPosition.x < lastPose_x_NewHigh
+            : false;
+
+        let lastPose_y_NewLow = lastPosition.y - 0.0001 * lastPosition.y;
+        let lastPose_y_NewHigh = lastPosition.y + 0.0001 * lastPosition.y;
+        let y_static =
+          currentPosition.y > lastPose_y_NewLow
+            ? currentPosition.y < lastPose_y_NewHigh
+            : false;
+
+        let lastPoseZNewLow = lastPosition.z - 0.0001 * lastPosition.z;
+        let lastPoseZNewHigh = lastPosition.z + 0.0001 * lastPosition.z;
+        let z_static =
+          currentPosition.z > lastPose_z_NewLow
+            ? currentPosition.z < lastPose_z_NewHigh
+            : false;
+
+        if (x_static && y_static && z_static && isMoving) {
+          angryTimer = setTimeout(function () {
+            console.log("MR_Robot is angry");
+            playGif("angry");
+          }, 5000);
         }
-        return false;
       }
 
       playGif("default");
