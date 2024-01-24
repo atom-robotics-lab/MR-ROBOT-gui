@@ -27,11 +27,10 @@ Get ready to revolutionize your robot control experience. MR-ROBOT-gui: Elevatin
 * [![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)](https://ubuntu.com/)
 * [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 * [![ROS](https://img.shields.io/badge/ros-%230A0FF9.svg?style=for-the-badge&logo=ros&logoColor=white)](https://www.sphinx-docs.org)
-*[![JavaScript](https://img.shields.io/badge/logo-javascript-blue?logo=javascript)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+* [![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+* [![HTML](https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white)](https://html.spec.whatwg.org/)
+* [![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 
-*[![HTML](https://img.shields.io/w3c-validation/:parser)](https://html.spec.whatwg.org/)
-
-*[![CSS](![Static Badge](https://img.shields.io/badge/:CSS))](https://developer.mozilla.org/en-US/docs/Web/CSS)
 
 
 
@@ -44,7 +43,8 @@ Get ready to revolutionize your robot control experience. MR-ROBOT-gui: Elevatin
 **Effortless Initialization**: Initiate the magic remotely by connecting to your ROS workspace server IP and your local IPv4. No need to be a tech wizard - it's as easy as pie. Just a few clicks, and you're ready to roll!
 
 [!ATTENTION]
-Only for the Bold: Dive into this adventure only if you've got all the prerequisite packages installed. But trust us, the thrill is worth it!
+Only for the **Bold**: Dive into this adventure only if you've got all the prerequisite packages installed. But trust us, the thrill is worth it!
+
 
 
 ## Technologies Used
@@ -53,170 +53,209 @@ Only for the Bold: Dive into this adventure only if you've got all the prerequis
 
 **_Backend_**: JAVASCRIPT
 
-**_Communication Protocol_**: WebSocket, ROSBridge suite
-
-## Unveiling the Mechanism
-
-Prepare to be dazzled as we unravel the enchanting dance between the web UI and Mr. Robot's control system. Here's a glimpse into the magic:
-
-**1. Communication Choreography:**
-   The web UI and the robot's control system engage in a mesmerizing dance through communication protocols. Imagine a bidirectional channel where commands flow seamlessly, and feedback gracefully returns.
-
-**2. Frontend Symphony:**
-   The frontend interface is not just a visual feast; it's a symphony of controls and visualizations. Delve into a comprehensive set of tools that empower you to monitor the robot's position and gaze through its inbuilt camera's lens. It's not just a UI; it's a canvas for real-time adjustments and control.
-
-**3. Real-time Alchemy:**
-   Watch in awe as the web UI transforms into a conduit for real-time adjustments. The robot's every move becomes a reflection of your commands, and the inbuilt camera's feed opens a window into its world, allowing you to fine-tune operations on the fly.
-
-Get ready to be part of the magic show where technology and control come together in perfect harmony. This is not just how it works; it's how it mesmerizes!
+**_Communication Protocols_**: WebSocket, ROSBridge suite
 
 
 ## Getting Started
 
-## Prerequisites
+# ROS Noetic Unleashed: A Step-by-Step Guide
 
-- Ubuntu 20.04
+Follow these steps to install ROS Noetic on your Ubuntu 20.04 system and set the stage for an exhilarating technological journey:
 
-- [Ros noetic](https://wiki.ros.org/noetic), Gazebo 11 and Rviz
-
-  For getting started with ros noetic refer to [Atom Robotics Lab Wiki](https://atom-robotics-lab.github.io/wiki/markdown/ros/ROS_installation/ROS_index.html)
-
-- [Rosbridge Suite](https://wiki.ros.org/rosbridge_suite)
-
-  
-
-- [Web Video Server](https://wiki.ros.org/web_video_server)
-
-  For installation use the [github repository](https://github.com/RobotWebTools/web_video_server)
-
-- The simulation to be run similar to [MR-ROBOT](https://github.com/atom-robotics-lab/MR-Robot)
-
-  
-
-## Installation
-
-### (1) Installing ROS Noetic
-
-To install ROS Noetic on Ubuntu 20.04, follow these steps:
-
-1. **Setup your sources.list**
-   
-   This step involves setting up your computer to accept software from packages.ros.org. Run the following command:
-
-   ```bash
-   sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
-   ```
-
-2. **Set up your keys**
-
-   Install curl if you haven't already done so, then add the ROS key to your system:
-
-   ```bash
-   sudo apt install curl
-   curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
-   ```
-
-3. **Update your package list**
-
-   Before installing ROS, you should update your system's package list:
-
-   ```bash
-   sudo apt update
-   ```
-
-4. **Install ROS Noetic**
-
-   There are three options for installing ROS Noetic depending on your needs:
-
-   - Full Desktop Install (recommended): This includes everything in Desktop plus 2D/3D simulators and 2D/3D perception packages. Use the following command:
-
-     ```bash
-     sudo apt install ros-noetic-desktop-full
-     ```
-
-   - Desktop Install: This includes everything in ROS-Base plus tools like rqt and rviz. Use the following command:
-
-     ```bash
-     sudo apt install ros-noetic-desktop
-     ```
-
-   - ROS-Base: This is a bare bones installation including ROS packaging, build, and communication libraries. No GUI tools are included. Use the following command:
-
-     ```bash
-     sudo apt install ros-noetic-ros-base
-     ```
-
-5. **Environment setup**
-
-   You must source this script in every bash terminal you use ROS in. You can automate this process by adding the following lines to your `~/.bashrc` file:
-
-   ```bash
-   echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
-   source ~/.bashrc
-   ```
-
-6. **Dependencies for building packages**
-
-   Install the necessary tools and dependencies for building ROS packages:
-
-   ```bash
-   sudo apt install python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
-   ```
-
-7. **Initialize rosdep**
-
-   Before you can use many ROS tools, you will need to initialize rosdep. Run the following commands:
-
-   ```bash
-   sudo apt install python3-rosdep
-   sudo rosdep init
-   rosdep update
-   ```
-
-After completing these steps, you should have ROS Noetic installed on your Ubuntu 20.04 system.
-
-### (2) Installing Pre-Requisits
-
-Before using Mr.Robot there are a few more prerequisits:
-1. **Installing Web Socket**
+ **Step 1: Setup Your Sources.list**
 ```bash
-  sudo apt-get install ros-noetic-rosbridge-server
+sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+```
+
+ **Step 2: Set Up Your Keys**
+Install curl and add the ROS key to your system:
+```bash
+sudo apt install curl
+curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
+```
+
+ **Step 3: Update Your Package List**
+Before installing ROS, update your system's package list:
+```bash
+sudo apt update
+```
+
+ **Step 4: Install ROS Noetic**
+Choose the installation option that suits your needs:
+
+- Full Desktop Install (recommended):
+  ```bash
+  sudo apt install ros-noetic-desktop-full
   ```
 
+- Desktop Install:
+  ```bash
+  sudo apt install ros-noetic-desktop
+  ```
+
+- ROS-Base:
+  ```bash
+  sudo apt install ros-noetic-ros-base
+  ```
+
+**Step 5: Environment Setup**
+Source the ROS setup script in every bash terminal you use ROS in. You can automate this process by adding the following lines to your `~/.bashrc` file:
+```bash
+echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
+source ~/.bashrc
+```
+
+**Step 6: Dependencies for Building Packages**
+Install the necessary tools and dependencies for building ROS packages:
+```bash
+sudo apt install python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
+```
+
+**Step 7: Initialize rosdep**
+Before using many ROS tools, initialize rosdep:
+```bash
+sudo apt install python3-rosdep
+sudo rosdep init
+rosdep update
+```
+
+## Gear Up: Prerequisites for the Adventure
+
+To embark on this thrilling journey with MR-ROBOT-gui, make sure your toolkit is armed with the following essentials:
+
+- **Ubuntu 20.04**: The stage for our adventure is set on the robust foundation of [Ubuntu 20.04]("https://releases.ubuntu.com/focal/"). Ensure you have it ready to go.
+
+- **Rosbridge Suite**: The silent conductor orchestrating seamless communication between our UI and the robot's control system. Make sure Rosbridge Suite is in your toolkit.
+
+- **Web Video Server**: Transforming the visual experience, this server is a must. Install it using the [GitHub repository](https://github.com/RobotWebTools/web_video_server) to ensure your visuals are top-notch.
+
+- **Simulation Setup**: For the grand simulation, ensure it mirrors the brilliance of [MR-ROBOT](https://github.com/atom-robotics-lab/MR-Robot).
 
 
-## USAGE
-  We've put our UI through its paces on the extraordinary [MR-ROBOT](https://github.com/atom-robotics-lab/MR-Robot), a creation of sheer brilliance from the Atom Robotics Lab.
+## MR-ROBOT-gui in Action
 
-   1. For running MR-ROBOT use the following commands:
+Follow these steps to initialize MR-ROBOT with our dynamic UI:
 
-   - ```bash 
-   roscore
-   ```
-   
-- ```bash
-   roslaunch mr_robot_gazebo turtlebot3_house.launch camera_enabled:=true lidar_enabled:=true kinect_enabled:=true
-   ```
+### Step 1: Running MR-ROBOT
+```bash
+roscore
+```
 
-- ```bash
-   roslaunch mr_robot_nav navigation.launch
-   ```
+```bash
+roslaunch mr_robot_gazebo turtlebot3_house.launch camera_enabled:=true lidar_enabled:=true kinect_enabled:=true
+```
 
-   2. After the sim has been initialized, Run the following commands in seperate terminals
+```bash
+roslaunch mr_robot_nav navigation.launch
+```
 
-- ```bash
-   roslaunch rosbridge_server rosbridge_websocket.launch
-   ```
+[!IMPORTANT]
+Before starting the nav package, ensure the move_base launch file includes the following command for flawless execution:
 
-- ```bash
-   rosrun web_video_server web_video_server
-   ```
+```bash
+<node pkg="robot_pose_publisher" type="robot_pose_publisher" respawn="false" name="posepub"></node>
+```
 
-- 
+The simulation should start as shown in the following:
 
+PHOTO
 
 
+### Step 2: Initializing Web Connectivity
+In separate terminals, execute the following commands to set up the web connectivity:
+
+```bash
+roslaunch rosbridge_server rosbridge_websocket.launch
+```
+
+```bash
+rosrun web_video_server web_video_server
+```
+
+### Step 3: Open the UI
+With MR-ROBOT and the web connectivity ready, open the UI for seamless control and monitoring interface.
+
+## Navigate with Ease: MR-ROBOT-gui User Guide
+
+Unlock the full potential of MR-ROBOT-gui with our user-friendly guide. From power-ups to navigation controls, here's everything you need to know:
+
+UI PHOTO
+
+### 1. **Power Button:**
+   The mighty power button is your gateway to connection bliss. When activated, it establishes the link between the simulation and the webpage through WebSocket magic. Witness the transformation as the UI comes to life.
+
+### 2. **Minimap:**
+   Behold the world from a bird's eye view! The minimap gracefully displays the robot's position on the map. Give it a double-click, and it expands into a full-screen marvel, providing a closer look at the robot's journey.
+
+### 3. **Setting Goals:**
+   In the realm of the full-screen map, your desires become the robot's goals. Simply double-click on the map to set a goal for the robot. It's not just navigation; it's a command given with a touch.
+
+### 4. **Keyboard Controls:**
+   Engage with the robot using intuitive keyboard controls:
+   - Press "W" to move forward.
+   - Press "S" to move backward.
+   - Press "A" to move left.
+   - Press "D" to move right.
+
+   Navigate with the ease of keystrokes and command the robot with precision.
+
+### 5. **Joystick Control:**
+   Embrace a new level of control with the joystick. Feel the movement of the robot at your fingertips, steering its path with the fluidity of a maestro.
+
+With this guide in hand, you're not just a user; you're a commander, orchestrating the movements of MR-ROBOT with finesse. Let the exploration begin, and may your commands lead the way!
+
+## Join the Movement: Contribute to MR-ROBOT-gui
+
+Calling all enthusiasts! We invite you to be part of the MR-ROBOT-gui community and contribute to the evolution of this incredible project. Here's how you can get involved:
+
+### Contribution Guidelines:
+
+1. **Fork and Clone:**
+   - Fork the repository and clone it to your local machine.
+
+2. **Create a New Branch:**
+   - For your feature or bug fix, create a new branch:
+     ```bash
+     git checkout -b feature/new-feature
+     ```
+     or
+     ```bash
+     git checkout -b bugfix/issue-number
+     ```
+
+3. **Make Changes and Test:**
+   - Implement your changes and thoroughly test them.
+
+4. **Commit Your Changes:**
+   - Commit your changes with a descriptive message:
+     ```bash
+     git commit -m "Description of your changes"
+     ```
+
+5. **Push to Your Branch:**
+   - Push your changes to your branch:
+     ```bash
+     git push origin feature/new-feature
+     ```
+
+6. **Submit a Pull Request:**
+   - Submit a pull request to the `main` branch of the original repository.
+   - Provide a clear and descriptive title.
+   - In the description, explain the purpose of your changes and offer any necessary context.
+
+7. **Follow Coding Conventions:**
+   - Ensure your code adheres to the project's coding conventions and style guidelines.
+
+8. **Feedback and Iteration:**
+   - Be prepared to address feedback and iterate on your changes if necessary.
+
+9. **Code of Conduct:**
+   - Abide by the [GitHub Code of Conduct](https://docs.github.com/en/site-policy/github-terms/github-community-code-of-conduct).
+
+Thank you for joining the movement and contributing to the growth of MR-ROBOT-gui! Your efforts are valued and essential to the success of this project. Let's shape the future of robot control together!
 
 
+## License
+[Apache 2.0]("https://opensource.org/license/apache-2-0/")
 
 
