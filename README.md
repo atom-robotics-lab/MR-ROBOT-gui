@@ -134,7 +134,7 @@ To embark on this thrilling journey with MR-ROBOT-gui, make sure your toolkit is
 
 ## MR-ROBOT-gui in Action
 
-Follow these steps to initialize MR-ROBOT with our dynamic UI:
+Follow these steps to initialize MR-ROBOT:
 
 ### Step 1: Running MR-ROBOT
 ```bash
