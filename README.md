@@ -138,7 +138,7 @@ To embark on this thrilling journey with MR-ROBOT-gui, make sure your toolkit is
 
 - **Web Video Server**: Transforming the visual experience, this server is a must. Install it using the [GitHub repository](https://github.com/RobotWebTools/web_video_server) to ensure your visuals are top-notch.
   ```bash
-  sudo apt-get install ros-kinetic-web-video-server
+  sudo apt-get install ros-noetic-web-video-server
   ```
 
 - **Simulation Setup**: For the grand simulation, ensure it mirrors the brilliance of [MR-ROBOT](https://github.com/atom-robotics-lab/MR-Robot).
