@@ -47,6 +47,12 @@ Get ready to revolutionize your robot control experience. MR-ROBOT-gui: Elevatin
 
 
 
+## Flow Of Control
+![image](https://github.com/atom-robotics-lab/MR-ROBOT-gui/assets/150596140/20af61d9-6df5-4a98-90ce-9b1d25afbc1d)
+
+
+
+
 ## Technologies Used
 
 **_Frontend_**: HTML, CSS, JAVASCRIPT
