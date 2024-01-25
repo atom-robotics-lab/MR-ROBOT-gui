@@ -136,7 +136,7 @@ To embark on this thrilling journey with MR-ROBOT-gui, make sure your toolkit is
   sudo apt-get install ros-noetic-rosbridge-server
   ```
 
-- **Web Video Server**: Transforming the visual experience, this server is a must. Install it using the [GitHub repository](https://github.com/RobotWebTools/web_video_server) to ensure your visuals are top-notch.
+- **Web Video Server**: Transforming the visual experience, this server is a must to ensure your visuals are top-notch.
   ```bash
   sudo apt-get install ros-noetic-web-video-server
   ```
