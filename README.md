@@ -197,7 +197,7 @@ With MR-ROBOT and the web connectivity ready, open the UI for seamless control a
 
 Unlock the full potential of MR-ROBOT-gui with our user-friendly guide. From power-ups to navigation controls, here's everything you need to know:
 
-UI PHOTO
+![gui1](https://github.com/atom-robotics-lab/MR-ROBOT-gui/assets/150596140/5e0d2c94-a0e3-4f1f-947c-5f19f43a1dae)
 
 ### 1. **Power Button:**
    The mighty power button is your gateway to connection bliss. When activated, it establishes the link between the simulation and the webpage through WebSocket magic. Witness the transformation as the UI comes to life.
@@ -207,6 +207,8 @@ UI PHOTO
 
 ### 3. **Setting Goals:**
    In the realm of the full-screen map, your desires become the robot's goals. Simply double-click on the map to set a goal for the robot. It's not just navigation; it's a command given with a touch.
+   
+![gui2](https://github.com/atom-robotics-lab/MR-ROBOT-gui/assets/150596140/8e3562ea-7a39-4c11-9a4d-9920072de43b)
 
 ### 4. **Keyboard Controls:**
    Engage with the robot using intuitive keyboard controls:
