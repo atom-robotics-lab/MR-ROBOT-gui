@@ -52,7 +52,7 @@ var ros = new ROSLIB.Ros({
         break;
       case "d":
         console.log("You pressed the D key - Move right");
-        publishTwist(0.2, 0.3, 0.4, 0.2, 0.3, 0.4);
+        publishTwist(0.2, 0.3, 0.4, 0.2, 0.3, 0.4); 
         break;
       case "x":
         console.log("You stopped the robot");
