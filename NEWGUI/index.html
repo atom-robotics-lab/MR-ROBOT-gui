@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="form.css" />
+    <script src="../src/components/input.js"></script>
+  </head>
+  <body>
+    <div class="form">
+      <h1>MR ROBOT GUI INITIALIZATION</h1>
+      <div class="input">
+        <div class="label">ROS Server IP</div>
+        <input
+          type="text"
+          id="ros"
+          placeholder="ROS Server IP"
+          onchange="rosIP()"
+          style="margin-bottom: 10px"
+        />
+        <div class="label">LocalHost IP</div>
+        <input
+          type="text"
+          id="localhost"
+          placeholder="LocalHost IP"
+          onchange="localhostIP()"
+          style="margin-bottom: 10px"
+        />
+        <div class="label">Web Video Server IP</div>
+        <input
+          type="text"
+          id="videoserver"
+          placeholder="Web Video Server IP"
+          onchange="videoIP()"
+        />
+      </div>
+      <button type="submit" id="submit" onclick="submit()">Submit</button>
+    </div>
+  </body>
+</html>

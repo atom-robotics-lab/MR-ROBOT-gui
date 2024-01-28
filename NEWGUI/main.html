@@ -10,7 +10,7 @@
     <script src="../src/components/camera.js"></script>
     <script src="../src/components/fullMapView.js"></script>
     <script
-      type="text/javascript"  
+      type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/easeljs@1/lib/easeljs.min.js"
     ></script>
 
@@ -31,6 +31,7 @@
 
     <script src="../src/components/nav2d.min.js"></script>
 
+    <script src="../src/components/rvizembedsmall.js"></script>
 
     <!-- <body onload="init()">
     <h1>rviz embed</h1>
@@ -46,8 +47,7 @@
     </div>
     <div class="main-div">
       <div class="FullMapView" id="MapView">
-        <div class="cross-button" onclick="MapViewClose()">
-        <span class="cross">❌</span> </div>
+        <div class="cross-button" onclick="MapViewClose()"></div>
         <div id="map" class="fullscreenmap"></div>
       </div>
       <div class="image-view">
@@ -59,6 +59,7 @@
           id="dynamicImage"
         />
       </div>
+
       <div class="logo-div">
         <div class="logo">
           <div class="img-text">
@@ -76,6 +77,11 @@
           </div>
         </div>
       </div>
+      <div>
+        <div id="rosValue"></div>
+        <div id="localhostValue"></div>
+        <div id="videoServerValue"></div>
+      </div>
       <!-- logo -->
       <!-- button grp -->
       <div class="button-grp">
@@ -91,10 +97,7 @@
       <!-- button grp -->
       <!-- bottom-bar -->
       <div class="bottom-bar">
-        <div class="map-view" id="smallmap" onclick="FullMapView()">
-          <img src="../src/images/mapstatic.png" alt="" width="200px" height="200px">
-        </div>
-
+        <div class="map-view" id="smallmap" onclick="FullMapView()"></div>
 
         <div class="speedometer">
           <img src="../src/images/Speedometer.webp" alt="" class="speed-img" />
@@ -106,15 +109,12 @@
       </div>
       <!-- bottom-bar -->
     </div>
-    
-    <script src="../src/components/rvizembedsmall.js"></script>
+
+    <script src="../src/components/input.js"></script>
     <script src="../src/components/moods.js"></script>
     <script src="../src/components/rvizembed.js"></script>
-    <script src="../src/components/rvizembedsmall.js"></script>
     <script src="../src/components/joystick.js"></script>
     <script src="../src/components/toggleEyes.js"></script>
     <script src="../src/components/rvizembed.js"></script>
-    <script src="../src/components/rosbridge.js"></script>
-    <script src="../src/components/emotion.js"></script>
   </body>
 </html>
