@@ -288,7 +288,5 @@ Our Socials - [Linktree](https://linktr.ee/atomlabs)
 
 * [Our wiki](https://atom-robotics-lab.github.io/wiki)
 * [ROS Official Documentation](http://wiki.ros.org/Documentation)
-* [Opencv Official Documentation](https://docs.opencv.org/4.x/)
-* [Mediapipe Documentation](https://mediapipe.readthedocs.io/en/latest/)
 * [Gazebo Tutorials](https://classic.gazebosim.org/tutorials)
 * [Ubuntu Installation guide](https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview)
