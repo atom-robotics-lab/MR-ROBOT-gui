@@ -23,7 +23,7 @@ function init() {
     setTimeout(function () {
       viewer.scene.scaleX = 55.0; 
       viewer.scene.scaleY = 55.0; 
-    }, 100);
+    }, 200);
   });
   // Connect to ROS after setting up the gridClient
   ros.on("connection", function () {

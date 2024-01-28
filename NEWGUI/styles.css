@@ -160,12 +160,13 @@ body {
   visibility: hidden;
 }
 .cross-button {
-  height: 50px;
+  height: 45px;
   width: 50px;
   position: absolute;
   z-index: 9999999;
-  background-color: #fffefe;
   right: 0;
+  display: flex;
+  justify-content: center;
 }
 .fullscreenmap {
   padding-left: 400px;
@@ -206,3 +207,7 @@ body {
   animation-iteration-count: infinite;
   mix-blend-mode: lighten;
 }
+
+  .cross{
+    font-size: 30px;
+  }

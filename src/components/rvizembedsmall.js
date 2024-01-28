@@ -39,13 +39,13 @@ function init() {
       console.log("Connection to ROS closed");
     });
   
-    // var nav = new NAV2D.OccupancyGridClientNav({
-    //   ros: ros,
-    //   topic: "map",
-    //   rootObject: viewer.scene,
-    //   viewer: viewer,
-    //   serverName: "/move_base_simple/goal",
-    // });
+    var nav = new NAV2D.OccupancyGridClientNav({
+      ros: ros,
+      topic: "map",
+      rootObject: viewer.scene,
+      viewer: viewer,
+      serverName: "/move_base_simple/goal",
+    });
     function init() {
       // Existing code...
   
