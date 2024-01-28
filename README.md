@@ -140,6 +140,7 @@ To embark on this thrilling journey with MR-ROBOT-gui, make sure your toolkit is
   ```bash
   sudo apt-get install ros-noetic-web-video-server
   ```
+- **Robot Pose Publisher**: Your bridge to precision, publishing accurate robot poses seamlessly. (Can be installed via [robot pose publisher github](https://github.com/GT-RAIL/robot_pose_publisher.git)
 
 - **Simulation Setup**: For the grand simulation, ensure it mirrors the brilliance of [MR-ROBOT](https://github.com/atom-robotics-lab/MR-Robot).
 
